@@ -254,3 +254,203 @@ for i in range(3): # Outer loop (i=0, 1, 2)
     for j in range(2): # Inner loop (j=0, 1) runs 3 * 2 = 6 times total
         print(i, j)
 ```
+
+---
+
+## ⚙️ Functions
+
+### What is a Function?
+
+A function is a block of reusable code that performs a specific task.
+
+Think of a function like a machine:
+* You give **input**.
+* The machine performs some **action**.
+* It **returns output**. 
+
+#### Importance of Functions:
+* **Code reusability**: Write once, use many times.
+* **Better structure and readability**: Programs are organized logically.
+* **Avoid repetition** (DRY principle).
+* **Easy debugging and testing**.
+* Break large programs into smaller, manageable units.
+
+### 1. Function Definition
+
+Use the `def` keyword to define a function.
+
+```python
+def function_name():
+    # statements
+    pass
+
+# Example: Simple function definition and call
+def greet():
+    print("hello, brother")
+
+greet() 
+# Output: hello, brother
+```
+### 2. Function Arguments (Parameters)
+
+Arguments are inputs passed to the function to operate on.
+```python
+def greet(name):
+    print("Hello", name)
+
+greet("Alice")
+# Output: Hello Alice
+
+```
+### 3. Multiple Arguments
+Functions can take any number of positional arguments.
+```python
+def add(a, b):
+    print(a + b)
+
+add(5, 7)
+# Output: 12
+```
+### 4. Return Values
+Functions use the return statement to send a result back to the caller.
+```python
+def square(x):
+    return x * x
+
+result = square(4)
+print(result)
+# Output: 16
+```
+
+### 5. Default Arguments
+You can set a default value for an argument. If the caller doesn't provide a value, the default is used.
+```python
+def greet_default(name="User"):
+    print("Hello", name)
+
+greet_default()      # Uses default value
+greet_default("Bob") # Overrides default value
+
+# Output:
+# Hello User
+# Hello Bob
+```
+### 6. *args and **kwargs
+These are special arguments used when you don't know exactly how many arguments will be passed.
+
+A) *args (Positional Arguments)
+Collects multiple positional arguments into a tuple.
+```python
+def total(*numbers):
+    print(numbers)
+
+total(1, 2, 3, 4)
+# Output: (1, 2, 3, 4) (A tuple)
+```
+
+B) **kwargs (Keyword Arguments)
+Collects multiple keyword arguments into a dictionary.
+```python
+def show_info(**details):
+    print(details)
+
+show_info(name="Alice", age=30)
+# Output: {'name': 'Alice', 'age': 30} (A dictionary)
+```
+
+### 7. Function Types
+
+| Type | Description | Examples |
+| :--- | :--- | :--- |
+| **Built-in Functions** | Already available in Python. | `print()`, `len()`, `sum()`, `max()`, `type()` |
+| **User-Defined Functions** | Functions you create using the `def` keyword. | `greet()`, `add()` |
+
+### 8. Return Multiple Values
+
+Functions can return multiple values, which are automatically packed into a tuple.
+
+```python
+def calc(a, b):
+    return a + b, a - b
+
+# Unpacking the returned tuple into two variables
+sum_result, diff_result = calc(10, 5)
+
+print(f"Sum: {sum_result}, Difference: {diff_result}")
+# Output: Sum: 15, Difference: 5
+```
+
+### 9. Docstring
+A docstring is a description written inside a function (using triple quotes """) to explain what it does.
+```python
+def greet(name):
+    """This function greets the user by their name."""
+    print("Hello", name)
+
+# Accessing the docstring:
+print(greet.__doc__) 
+# Output: This function greets the user by their name.
+```
+### 10. Scope of Variables
+Scope refers to the region of the code where a variable is accessible.
+
+#### Local Scope: A variable declared inside a function is only accessible within that function.
+```python
+def test_local():
+    x = 10  # local variable (only accessible inside test_local)
+    print(x)
+```
+#### Global Scope: A variable declared outside a function is accessible everywhere, including inside functions (unless modified).
+```python
+x = 5 # global variable
+def test_global():
+    print(x) # Accessing the global 'x'
+
+test_global() 
+# Output: 5
+```
+### 11. Anonymous (Lambda) Functions
+Small, single-line functions created using the lambda keyword. They are restricted to a single expression.
+
+Syntax: lambda arguments: expression
+
+```python
+# Lambda function to calculate the square of a number
+square_lambda = lambda x: x * x
+print(square_lambda(5))
+```
+Lambda functions are mostly used in:
+sorted()
+map()
+filter()
+reduce()
+
+### Simple Calculator
+
+```python
+# calculator 
+
+def sum(a,b):
+    return a+b
+def multi(a,b):
+    return a*b
+def minus(a,b):
+    return a-b
+def div(a,b):
+    return a/b
+a = int(input("enter any number:"))
+b = int(input("enter any number:"))
+print('Note:please write exact words!!')
+op = input("ENter operation [sum,multi,minus,div]]:")
+
+if op == 'sum':
+    print("sum = ",sum(a,b))
+elif op == 'multi':
+    print("multi =",multi(a,b))
+elif op == 'minus':
+    print("substraction =",minus(a,b))
+elif op == 'div':
+    print("division= ",div(a,b))
+else:
+    print("please enter correct operation name!!")
+```
