@@ -1,5 +1,2 @@
-
-age = 18 
-country = True
-if(age >= 18 and country == True):
-    print("eligible")
+t = (10, 20, 30)
+# t[1] = 50   # ERROR 
