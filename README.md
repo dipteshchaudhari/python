@@ -705,6 +705,98 @@ diction = {
     "skills" : ["python","java","devOps"]
 }
 print(diction)
+```
+## TOPIC 5: INPUT / OUTPUT (I/O)
 
+##### USER INPUT 
+```python
+name = input("Enter your name: ")
+print("Hello", name)
+```
+Taking Multiple Inputs
+```python
+# a,b = input("Enter values: ").split()
+# print(f"values :{a} and {b}")
+
+a,b = map(int, input("enter two Numbers :").split())
+print(f"values :{a} and {b}")
+```
+
+Evaluating Expressions from Input
+
+```python
+exp = eval(input("Enter an Expression :"))
+print(exp)
+```
+##### OUTPUT (PRINT FORMATTING)
+f-Strings (Most Important for Developers)
+
+```python
+name = "Dip"
+age = 19
+print(f"My name is {name} and my age is {age}.")
+```
+Formatting Numbers
+
+```python
+pi = 3.14159265
+print(f"enter value{pi:.2f}")
+print(f"enter value{pi:.4f}")
+```
+Alignment Formatting (Useful in Reports)
+```python
+print(f"{'name':10}{'age':5}")
+print(f"{'Dip':10}{19:5}")
+
+print(f"{'name':10}{'age':5}")
+print(f"{'Dip':10}{'19':5}")
+```
+##### {'name':10} → print "name" in a field 10 characters wide \n
+##### {'age':1} → print "age" in a field 1 character wide
+
+### FILE INPUT / OUTPUT (FILE I/O) :
+python can be used to perform operations on a file.(read & write data) 
+A file is a named location on disk used to store data permanently. (0,1 bits format)
+#### two types of files :
+   1.text files : .txt,.docx,.log etc.
+   2.Binary Files : .mp4, .png, .mov, .jpeg
+
+
+Variables store temporary data (lost after program ends), but files store data for future use.
+There are three major steps in file handling:
+   -Open the file
+   -Read / Write the file
+   -Close the file
+1. Opening a File: open()
+```python
+
+file_object = open("filename", "mode")
 
 ```
+--> Common modes
+###### Mode	Meaning
+###### "r" --> Read (file must exist)
+###### "w"--> Write (overwrite if file exists)
+###### "a"--> Append (write at end)
+###### "x"--> create a new file and and oper it for writing
+###### "b"--> binary mode 
+###### "rb"--> Read binary
+###### "wb"--> Write binary
+###### "r+"--> Read + write
+###### "t"--> text mode (defaut)
+###### "+"--> open a disk file for updating(reading andd writing) 
+
+2. Closing a File: close()
+```python
+
+f.close()
+
+```
+Example : 
+```python
+f = open("file.txt","r")
+data = f.read()
+print(data)
+f.close() 
+```
+
