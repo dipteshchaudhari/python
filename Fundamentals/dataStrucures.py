@@ -125,17 +125,17 @@ print(t.index("kaju"))
 # SET : Set is an unordered, mutable, unindexed collection of unique elements.
 # No duplicates allowed, No indexing, Useful for membership checking
 
-# set = {1,2,2,4,5,6,2,4,5,2,4}
-# print(set)  #<- print only unique elemets only
+set = {1,2,2,4,5,6,2,4,5,2,4}
+print(set)  #<- print only unique elemets only
 
-# # Adding items
-# set.add(454)
-# print(set)
+# Adding items
+set.add(454)
+print(set)
 
-# #removing elements
-# set.remove(454)
-# set.remove(2)
-# print(set)
+#removing elements
+set.remove(454)
+set.remove(2)
+print(set)
 
 # Set Operations (very important)
 
@@ -260,3 +260,9 @@ diction = {
     "skills" : ["python","java","devOps"]
 }
 print(diction)
+
+
+# Topic 5: Input/Output
+
+
+
