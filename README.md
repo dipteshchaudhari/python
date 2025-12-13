@@ -792,6 +792,7 @@ file_object = open("filename", "mode")
 f.close()
 
 ```
+### Reading Files
 Example : 
 ```python
 f = open("file.txt","r")
@@ -799,4 +800,186 @@ data = f.read()
 print(data)
 f.close() 
 ```
+Read Line by Line
+```python
+f = open("data.txt", "r")
+for line in f:
+    print(line.strip())
+f.close()
+
+```
+READLINE : read one line at a time
+```python
+f = open("file.txt","r")
+data = f.readline()
+print(data)
+
+data = f.readline()
+print(data)
+f.close()
+
+```
+Read All Lines into List
+```python
+f = open("file.txt","r")
+data = f.readlines()
+print(data)
+f.close()   
+```
+### Writing to Files
+
+-> Write (Overwrites File)
+```python
+with open("file.txt","w") as f:
+    f.write("lata mangeshkar")
+```
+-> Append to File
+```python
+with open("file.txt","a") as f:
+    f.write("\nAR rehman")
+```
+--> r+ mode : overwrite the file from the beginning of the file
+read + overwrite --> (pointer at start) and (No truncate)
+```python
+with open("file.txt","r+") as f:
+
+    # f.write("\nkanha")
+    # f.write("\ndeven")
+    # f.write("\nkrsna")
+    # f.write("\ntyla")
+    # f.write("\ntylor")
+
+    data = f.read()   #<-- pointer is at y so when we read file it will read after y character in this file
+    print(data)
+```
+--> w+ mode : open for reading and writing , file is creaeted if it doesn't exist otherwise it it truncated
+read + overwrite --> truncate 
+```python
+
+with open("file.txt","w+") as f :
+    print(f.read())
+    f.write("this is diptesh!!")
+    f.write("\nfile input output")
+```
+
+--> a+ mode : pointer place at the end of the string for the appeanding  and when we write something it will appeand the string
+read + append data --> (no truncate) (pointer end)   
+```python
+with open("file.txt","a+") as f:
+    f.write("\nusing a+")
+    print(f.read())
+```
+### Breif
+r : read the data from a file
+w : truncate and write the new data to it 
+a : no truncate , append the data at the end
+r+ :  read + overwrite --> (pointer at start) and (No truncate)
+w+ :  read + overwrite --> truncate 
+a+ :  read + append data --> (no truncate) (pointer end)   
+
+### best practice with 'with' statement 
+```python
+with open("students.txt", "r") as f: 
+for line in f: 
+print(line.strip())
+```
+## deleting a file : using os module
+module(code library) is a file written by the another programmer,and it generally has 
+a functions we can use
+   
+```python
+import os 
+os.remove("sample.txt")
+```
+
+### some practice 
+
+```python
+
+# practice : create a file with this data 
+with open("prac.txt","w") as f:
+    f.write("Hi Everyone\n")
+    f.write("i am learning file I/o\n")
+    f.write("using java\n")
+    f.write("and i love java")
+
+# creating a function that replace java with python 
+
+# first we read the data 
+with open("prac.txt","r") as f:
+        data = f.read()
+
+# then with that data we performed replace operation for replacing python with java
+new_Data = data.replace("java", "python")
+print(new_Data)
+
+#then we simply overwrite that file with new data 
+with open("prac.txt","w") as f:
+        f.write(new_Data)
+#search the word learning exists in the data or not (function)
+def search_word():
+    word = "learning"
+    with open("prac.txt","r") as f:
+        data = f.read()
+
+        if(data.find(word) != -1):
+            print("Found that word")
+        else:
+            print("Not Found") 
+
+search_word()
+
+ # write a function to find in which line of the file the "learning" word occur first
+
+def check_for_line():
+    word = "learning"
+    data = True
+    line_no = 1
+    with open("prac.txt","r") as f:
+        while data:
+            data = f.readline()
+            if (word in data) :
+                print(line_no)
+                return
+            line_no += 1
+    return -1
+
+check_for_line()
+```
+
+### working with json module : JSON FILE HANDLING
+
+```python
+import json
+
+data = {"name" : "dip" , "age" : 19}
+
+with open("data.json","w") as f:
+    json.dump(data,f,indent=4)
+```
+The indent parameter is used to format (pretty-print) JSON data so that it becomes human-readable.
+
+output (without indent)
+```python
+{"name":"dip","age":19}
+```
+output (with indent = 4) 
+```python
+{
+    "name": "dip",
+    "age": 19
+}
+```
+### CSV File Handling 
+
+```python
+import csv
+
+with open("names.csv","r") as f:
+    reader = csv.reader(f)
+
+    for line in reader:
+        print(line)
+```
+#### simple project 
 
