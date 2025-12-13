@@ -1,2 +1,2 @@
-10}{'age':5}")
-print(f"{'Dip':10}{'19':5}")
+ata = f.read()
+    print(data)

@@ -1,2 +1,5 @@
-hello m diptesh and 
-learning python fundamentals 
+this is diptesh!!
+file input output
+using a+ 
+using a+
+using a+
