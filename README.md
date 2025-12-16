@@ -981,5 +981,138 @@ with open("names.csv","r") as f:
     for line in reader:
         print(line)
 ```
-#### simple project 
 
+## CSV & JSON Processing in Python
+
+CSV → tabular data (Excel-like): datasets, logs, reports <br>
+JSON → structured, hierarchical data: APIs, configs, web apps
+
+PART 1: CSV PROCESSING <br>
+-> CSV = Comma-Separated Values
+<br>
+name,age,city <br>
+Dip,19,Ahmedabad <br>
+Raj,20,Surat
+
+#### Reading CSV Files (Basic)
+
+```python
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+```python
+['name', 'age', 'city']
+['Dip', '19', 'Ahmedabad']
+```
+
+#### Reading CSV as Dictionary
+```python
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row)
+```
+```python
+{'name': 'Dip', 'age': '19', 'city': 'Ahmedabad'}
+```
+
+#### Writing CSV Files
+```python
+import csv
+
+data = [
+    ["name", "age", "city"],
+    ["Dip", 19, "Ahmedabad"],
+    ["Raj", 20, "Surat"]
+]
+
+with open("output.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+```
+#### Write dictionary-based CSV
+```python
+import csv
+
+students = [
+    {"name": "Dip", "age": 19, "city": "Ahmedabad"},
+    {"name": "Raj", "age": 20, "city": "Surat"}
+]
+
+with open("students.csv", "w", newline="") as file:
+    fieldnames = ["name", "age", "city"]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    
+    writer.writeheader()
+    writer.writerows(students)
+
+```
+### JSON = JavaScript Object Notation
+
+JSON = JavaScript Object Notation
+<br> -> Looks like Python dictionaries.
+```python
+{
+  "name": "Dip",
+  "age": 19,
+  "skills": ["Python", "Java", "SQL"]
+}
+```
+
+##### Reading JSON Files
+```python
+
+import json
+
+with open("data.json", "r") as file:
+    data = json.load(file)
+
+print(data)
+print(data["name"])
+```
+##### Writing JSON Files
+```python
+import json
+
+student = {
+    "name": "Dip",
+    "age": 19,
+    "skills": ["Python", "Java"]
+}
+
+with open("student.json", "w") as file:
+    json.dump(student, file, indent=4)
+```
+### Knowing Whether a File Exists or Not:
+Sometimes, before reading or writing, you may want to check if a file exists to avoid errors.<br> 
+Python provides the os and pathlib modules to check file existence. 
+#### Using os.path.exists()
+
+```python
+import os 
+filename = "students.txt" 
+if os.path.exists(filename): 
+print(f"Yes, the file '{filename}' exists.") 
+else: 
+print(f"No, the file '{filename}' does not exist.")
+```
+#### Using pathlib
+```python
+from pathlib import Path
+
+file = Path("prac.txt")
+
+if Path.exists(file):
+    print("file exists!!")
+else:
+    print("file not found !!")
+
+```
+   
