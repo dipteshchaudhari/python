@@ -1115,4 +1115,58 @@ else:
     print("file not found !!")
 
 ```
-   
+
+# error Handling in python
+This topic is critical because real programs fail, and professional developers know how to handle<br> failures gracefully instead of crashing.
+We will cover:
+
+1) What errors are
+2) Types of errors
+3) try / except
+4) else / finally
+5) Handling multiple exceptions
+6) Raising exceptions
+7) Custom exceptions
+8) Real-world examples
+9) Best practices
+
+### 1) What is an Error?
+An error is a problem that occurs during program execution and stops the program if not handled.
+```python
+x = 10 / 0
+```
+ZeroDivisionError
+
+### 2. Types of Errors in Python
+##### A) Syntax Error (cannot be handled) <br>
+-> Occurs before execution. <br>
+-> You must fix the code.<br>
+
+##### B) Runtime Errors (can be handled) 
+
+Common ones:
+1) ZeroDivisionError : division by error : 10/0
+2) ValueError : ValueError occurs when a function gets a value of the right type but an invalid value. ex :int("abc")
+3) TypeError : incompatible data type. ex :"10" + 5
+4) IndexError : occurs when you try to access an index that is outside the valid range of a sequence
+5) KeyError : occurs when you try to access a dictionary key that does not exist.
+6) FileNotFoundError : occurs when Python tries to open a file that does not exist at the specified path. ex : f = open("data.txt", "r")
+These are what try–except handles.
+
+### 3. try / except (Core Concept)
+
+Basic Syntax
+```python
+try:
+    # risky code
+except:
+    # runs if error occurs
+
+```
+```python
+try:
+    a = int(input("Enter a number: "))
+    print(10 / a)
+except:
+    print("Something went wrong")
+```
