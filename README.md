@@ -1115,4 +1115,250 @@ else:
     print("file not found !!")
 
 ```
-   
+
+# error Handling in python
+This topic is critical because real programs fail, and professional developers know how to handle<br> failures gracefully instead of crashing.
+We will cover:
+
+1) What errors are
+2) Types of errors
+3) try / except
+4) else / finally
+5) Handling multiple exceptions
+6) Raising exceptions
+7) Custom exceptions
+8) Real-world examples
+9) Best practices
+
+### 1) What is an Error?
+An error is a problem that occurs during program execution and stops the program if not handled.
+```python
+x = 10 / 0
+```
+ZeroDivisionError
+
+### 2. Types of Errors in Python
+##### A) Syntax Error (cannot be handled) <br>
+-> Occurs before execution. <br>
+-> You must fix the code.<br>
+
+##### B) Runtime Errors (can be handled) 
+
+Common ones:
+1) ZeroDivisionError : division by error : 10/0
+2) ValueError : ValueError occurs when a function gets a value of the right type but an invalid value. ex :int("abc")
+3) TypeError : incompatible data type. ex :"10" + 5
+4) IndexError : occurs when you try to access an index that is outside the valid range of a sequence
+5) KeyError : occurs when you try to access a dictionary key that does not exist.
+6) FileNotFoundError : occurs when Python tries to open a file that does not exist at the specified path. ex : f = open("data.txt", "r")
+These are what try–except handles.
+
+### 3. try / except (Core Concept)
+
+Basic Syntax
+```python
+try:
+    # risky code
+except:
+    # runs if error occurs
+
+```
+```python
+try:
+    a = int(input("Enter a number: "))
+    print(10 / a)
+except:
+    print("Something went wrong")
+```
+Using this program does not crash
+
+### 4. Catching Specific Exceptions (VERY IMPORTANT)
+```python
+try:
+    x = int(input())
+    print(10 / x)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+except ValueError:
+    print("Invalid input")
+
+```
+### 5. else Block
+```python
+try:
+    x = int(input("Enter number: "))
+    print(10 / x)
+except ZeroDivisionError:
+    print("Division by zero")
+else:
+    print("Calculation successful")
+```
+### 6. finally Block
+
+finally block is used with try–except to define code that must execute no matter what, whether an exception occurs or not.
+
+```python
+try:
+    # code that may raise an error
+except SomeError:
+    # code that runs if an error occurs
+finally:
+    # code that always runs
+
+```
+Example :
+```python
+try :
+    x = int(input("Enter a Number:"))
+    print(x/0)
+except ZeroDivisionError:
+    print("can not divide by zero")
+finally : 
+    print("this block always execute")
+```
+Example :
+```python
+try :
+    f = open("name.txt","r") 
+    print(f.read())
+except FileNotFoundError:
+    print("file not found")
+finally : 
+    f.close()  #if file exists this execute 
+    print("file closed")
+```
+### Handling Multiple Exceptions Together
+```python
+try:
+    # code that may raise errors
+except (ErrorType1, ErrorType2):
+    # common handling code
+
+```
+```python
+try:
+    x = int(input("Enter a number: "))
+    result = 10 / x
+    print(result)
+except (ValueError, ZeroDivisionError):
+    print("Invalid input or division by zero")
+```
+Catching all exceptions together
+```python
+try : 
+    # b = int(input())
+    b = 10 / 0
+except Exception as e:
+    print("Hello, Error accured ",e)
+```
+### Raising Exceptions (raise)
+raise keyword is used to manually trigger an exception. This is useful when you want to enforce rules, validate data, or signal that something is wrong in your program.
+
+Example 1:
+```python
+age = int(input("enter any age:"))
+
+if age < 18:
+    raise ValueError("age must be 18 or above 18")
+else:
+    print("access granted")
+```
+Example 2:
+```python
+try :
+    num = int(input("enter a Number:"))
+    if num == 0:
+        raise ZeroDivisionError("Zero se devide nahi hoga")
+    print(10/num)
+except ZeroDivisionError as e:
+    print("Error is :",e)
+```
+### Custom Exceptions
+ use exception class :
+```python
+class InvalidAgeError(Exception):
+    pass
+```
+Example 1:
+```python
+class BalanceError(Exception):              #custom error
+    pass
+try:
+    balance = 1000                  
+    withdraw = int(input("enter your amount : "))
+
+    if withdraw > balance:
+        raise BalanceError("Insufficient balance")
+
+    balance -= withdraw
+
+    print("remaining balance",balance)
+except Exception as e:
+    print("ye toh Error hain:",e)
+```
+example 2:
+```python
+class usernameError(Exception):
+    pass
+class PassError(Exception):
+    pass
+
+
+try :
+    username = input("enter username:")
+    password = input("enter password:")
+
+    if(username != 'admin'):
+        raise usernameError("invalid username")
+    if(password != 'raju'):
+        raise PassError("invalid password")
+except (usernameError , PassError) as e:
+    print("Login failed :",e)
+
+else:
+    print("login successful")   
+```
+### Examples
+example 1:
+```python
+def divide(a,b):
+    try:
+        return a/b
+    except ZeroDivisionError:
+        return "cann't divide by zero"
+
+print(divide(10,0))
+```
+example 2:
+```python
+try :
+    f = open("data.txt","r")
+    print(f.read())
+    f.close()
+except FileNotFoundError:
+    print("file not found") 
+```
+example 3:
+```python
+try:
+    marks = int(input("etner marks"))
+    if marks < 0 or marks > 100:
+        raise ValueError
+except ValueError:
+    print("enter marks between 0-100")
+```
+
+### Where Error Handling is Used
+1) File operations
+2) APIs & web apps
+3) Data validation
+4) Machine learning pipelines
+5) Automation scripts
+6) User input handling
+
+### Best Practices
+✔ Catch specific exceptions
+✔ Keep try block small
+✔ Use finally for cleanup
+✔ Raise meaningful errors
+✔ Never silence errors blindly
