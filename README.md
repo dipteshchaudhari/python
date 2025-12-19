@@ -1362,3 +1362,171 @@ except ValueError:
 ✔ Use finally for cleanup
 ✔ Raise meaningful errors
 ✔ Never silence errors blindly
+
+
+# Python – Intermediate
+
+1) Modules & Packages
+2) Comprehensions (List / Dict / Set)
+3) Lambda, Map, Filter, Reduce
+4) String & Date Handling
+5) Regular Expressions (Regex)
+6) OOP Basics (Classes & Objects)
+7)Pillars of OOP <br>
+   Inheritance<br>
+   Polymorphism<br>
+   Encapsulation<br>
+   Abstraction<br>
+
+## Modules & Packages
+A module is simply a Python file (.py) that contains code (functions, variables, classes) which can be reused in other files.
+```python
+math_utils.py
+```
+```python
+# math_utils.py
+def add(a, b):
+    return a + b
+```
+Using it in another file:
+```python
+import math_utils
+
+print(math_utils.add(10, 5))
+```
+### Different Ways to Import Modules
+A) Import whole module
+```python
+import math_utils
+math_utils.add(2, 3)
+
+```
+B) Import specific function
+```python
+from math_utils import add
+add(2, 3)
+```
+C) Import with alias
+```python
+import math_utils as mu
+mu.add(2, 3)
+```
+
+## Built-in Modules
+
+Built-in modules are modules that come pre-installed with Python.<br>
+They provide ready-to-use functionality so you don’t need to write everything from scratch.
+
+Why built-in modules are useful<br>
+   Save development time<br>
+   Reliable and well-tested<br>
+   Improve code readability<br>
+   No installation required
+
+##### use built-in modules
+```python
+import math
+import random
+import datetime
+import os
+import sys
+import json
+
+#math module : Used for mathematical operations.
+print(math.sqrt(64))
+print(math.factorial(3))
+
+#random module : Used to generate random values.
+print(random.randint(1,100))
+
+#datetime module : Used for date and time operations.
+print(datetime.datetime.now())
+
+# os module : Used to interact with the operating system.
+print(os.getcwd())
+
+# sys : Used for system-specific parameters.
+print(sys.version)
+
+# json : Used to work with JSON data.
+data = {'name':'dip','age':19}
+print(json.dumps(data))
+```
+Import styles
+```python
+import math
+from math import sqrt
+from math import sqrt as s
+```
+
+## What is a Package?
+A package is a folder that contains multiple modules. <br>
+A Python package is created by making a directory with an __init__.py file and placing related modules inside it.
+
+#### Types of packages
+   1) Built-in packages → os, sys, math
+   2) User-defined packages → created by developers
+   3) Third-party packages → installed using pip (e.g., numpy, pandas)
+
+##### Basic package structure
+```python
+my_package/
+│
+├── __init__.py
+├── module1.py
+├── module2.py
+
+```
+Importing from a package
+```python
+import my_package.module1
+or
+from my_package import module1
+or
+from my_package.module1 import function_name
+```
+
+Example :
+```python
+calculator/
+│
+├── __init__.py
+├── add.py
+├── subtract.py
+```
+
+1. Create a package (folder)
+```python
+   calculator/
+```
+2. Add __init__.py
+```python
+   calculator/
+└── __init__.py
+```
+3. Create modules inside the package
+```python
+calculator/
+├── __init__.py
+├── add.py
+├── subtract.py
+```
+4. Use the package in another file
+```python
+from calculator.add import add
+from calculator.subtract import subtract
+
+print(add(10, 5))
+print(subtract(10, 5))
+```
+6. (Optional) Simplify imports using __init__.py :
+   in this we write some code in __init__py so we simplify the importing <br>
+__init__.py :
+```python
+from .add import add
+from .subtract import subtract
+```
+```python
+from calculator import add, subtract
+print(add(5, 3))
+```
