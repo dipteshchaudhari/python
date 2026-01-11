@@ -4,7 +4,7 @@
 
 ### 1. Variables
 
-A **variable** is a name given to a value stored in memory.
+A **variable** is a name given to a value stored in memory..
 
 * **Rules for Variables:**
     * Must start with a letter or an underscore (`_`).
