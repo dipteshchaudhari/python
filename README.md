@@ -25,7 +25,7 @@ A **variable** is a name given to a value stored in memory..
 
 ### 2. Data Types
 
-Python has several built-in data types. The basic types are:
+- Python has several built-in data types. The basic types are:
 
 | Type | Description | Examples |
 | :--- | :--- | :--- |
